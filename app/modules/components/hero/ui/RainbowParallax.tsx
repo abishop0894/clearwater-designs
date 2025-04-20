@@ -3,6 +3,7 @@
 import React, {  useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ParallaxOptions } from '@/lib/utils/types';
+import  Nav  from '@/app/modules/layout/Nav';
 
 interface ParallaxHeroProps extends ParallaxOptions {
   title: string;
@@ -18,7 +19,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
   const titleY = useTransform(scrollY, [0, 500], [0, 350]);
   const titleOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const bgPositionY = useTransform(scrollY, [0, 500], ['50%', '60%']);
-  const bgSize = useTransform(scrollY, [0, 500], ['400%', '500%']);
+  const bgSize = useTransform(scrollY, [0, 500], [ '300%', '250%']);
   const rainbowAdditionalOpacity = useTransform(scrollY, [0, 500], [0, 0.6]);
   const combinedOpacity = useTransform(rainbowAdditionalOpacity, value => 0.4 + value);
 
@@ -29,29 +30,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
 
   return (
     <div className="w-full relative">
-      <nav className="absolute top-0 z-20 w-full text-white">
-        <div className="container mx-auto relative border-b border-white/40">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <button 
-                type="button" 
-                className="md:hidden mr-4 flex flex-col space-y-1"
-                aria-label="Toggle navigation"
-              >
-                <span className="block w-6 h-0.5 bg-white"></span>
-                <span className="block w-6 h-0.5 bg-white"></span>
-                <span className="block w-6 h-0.5 bg-white"></span>
-              </button>
-              <a href="#" className="text-2xl text-white">
-                <i className="fa fa-codepen"></i>
-              </a>
-            </div>
-            <p className="text-sm">
-              Made with <strong>ES6</strong>
-            </p>
-          </div>
-        </div>
-      </nav>
+        <Nav />
 
       <div 
         ref={heroRef}
