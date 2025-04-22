@@ -1,11 +1,8 @@
-import { ParallaxHero } from "@/app/modules/components/hero/ui/RainbowParallax";
+import { HomeHero } from "./modules/components/hero/HomeHero";
 export default function Home() {
   return (
     <div className="h-[200vh] w-full">
-      <ParallaxHero 
-        title="Clearwater Luxury Designs" 
-        showRainbowOpacity={false} 
-      />
+   <HomeHero />
       
     </div>
   );

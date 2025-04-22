@@ -46,10 +46,10 @@ const Nav = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ 
               opacity: 1, 
-              y: 0,
+              y: 20,
               transition: { 
                 duration: 0.6, 
                 ease: [0.4, 0, 0.2, 1],
@@ -57,7 +57,7 @@ const Nav = () => {
             }}
             exit={{ 
               opacity: 0, 
-              y: -20,
+              y: 40,
               transition: { 
                 duration: 0.6, 
                 ease: [0.4, 0, 0.2, 1], 
