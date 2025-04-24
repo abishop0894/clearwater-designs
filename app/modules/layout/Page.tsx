@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Nav from "./Nav";
 
 const Page = ({ children }: { children: React.ReactNode }) => {
@@ -5,7 +6,7 @@ const Page = ({ children }: { children: React.ReactNode }) => {
     <div>
       <Nav />
       {children}
-   
+      <Footer />
     </div>
   );
 };
