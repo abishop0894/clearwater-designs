@@ -15,7 +15,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex items-center justify-between bg-white/90 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex items-center justify-between bg-black backdrop-blur-sm">
       {/* Logo */}
       {/* <Link href="/" className="relative z-50" aria-label="Clearwater Designs Home">
         <div className="flex items-center">
@@ -28,7 +28,7 @@ const Nav = () => {
           />
         </div>
       </Link> */}
-      <h1 className="text-2xl font-bold text-black">Clearwater Designs</h1>
+      <h1 className="text-2xl font-bold text-white">Clearwater Designs</h1>
 
       {/* Hamburger Menu Icon */}
       <div className="relative z-50">
@@ -38,7 +38,7 @@ const Nav = () => {
           size={24}
           label="Toggle menu"
           hideOutline={false}
-          color="#000000"
+          color="#FFFFFF"
         />
       </div>
 
@@ -63,9 +63,9 @@ const Nav = () => {
                 ease: [0.4, 0, 0.2, 1], 
               }
             }}
-            className="fixed inset-0 h-screen w-screen bg-white pt-24 px-6 z-40"
+            className="fixed inset-0 h-screen mt-[60px] w-screen bg-black pt-24 px-6 z-40"
           >
-            <div className="flex flex-col space-y-6 text-2xl bg-white">
+            <div className="flex flex-col space-y-6 text-2xl bg-black">
               <Link 
                 href="/" 
                 className="hover:text-blue-600 transition-colors"
