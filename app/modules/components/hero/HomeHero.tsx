@@ -39,7 +39,7 @@ export const HomeHero = () => {
           exit={{ opacity: 0, x: -100 }}
           transition={{ 
             opacity: { duration: 1, ease: customEase },
-            x: { duration: 0.6, ease: customEase }
+            x: { duration: 5, ease: customEase }
           }}
         >
           <motion.img
@@ -48,7 +48,7 @@ export const HomeHero = () => {
             initial={{ scale: 1.05 }}
             animate={{ scale: 1.1 }}
             transition={{ 
-              scale: { duration: 5, ease: customEase }
+              scale: { duration: 1, ease: customEase }
             }}
           />
         </motion.div>
