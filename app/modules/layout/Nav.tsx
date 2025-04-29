@@ -9,29 +9,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex items-center justify-between bg-black backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex items-center justify-between">
       {/* Logo */}
-      {/* <Link href="/" className="relative z-50" aria-label="Clearwater Designs Home">
-        <div className="flex items-center">
-          <Image 
-            src="/logo.svg" 
-            alt="Clearwater Designs Logo" 
-            width={150} 
-            height={40} 
-            priority
-          />
-        </div>
-      </Link> */}
-      <h1 className="text-2xl font-bold text-white">Clearwater Designs</h1>
+      <Link href="/" className="relative z-50 bg-black p-3 rounded-md" aria-label="Clearwater Designs Home">
+        <h1 className="text-2xl font-bold text-white">Clearwater Designs</h1>
+      </Link>
 
       {/* Hamburger Menu Icon */}
-      <div className="relative z-50">
+      <div className="relative z-50 bg-black p-2 rounded-md">
         <Hamburger 
           toggled={isMenuOpen}
           toggle={setIsMenuOpen}
@@ -65,38 +55,38 @@ const Nav = () => {
             }}
             className="fixed inset-0 h-screen mt-[60px] w-screen bg-black pt-24 px-6 z-40"
           >
-            <div className="flex flex-col space-y-6 text-2xl bg-black">
+            <div className="flex flex-col space-y-6 text-2xl">
               <Link 
                 href="/" 
-                className="hover:text-blue-600 transition-colors"
+                className="text-white hover:text-blue-600 transition-colors"
                 onClick={closeMenu}
               >
                 Home
               </Link>
               <Link 
                 href="/about" 
-                className="hover:text-blue-600 transition-colors"
+                className="text-white hover:text-blue-600 transition-colors"
                 onClick={closeMenu}
               >
                 About
               </Link>
               <Link 
                 href="/services" 
-                className="hover:text-blue-600 transition-colors"
+                className="text-white hover:text-blue-600 transition-colors"
                 onClick={closeMenu}
               >
                 Services
               </Link>
               <Link 
                 href="/portfolio" 
-                className="hover:text-blue-600 transition-colors"
+                className="text-white hover:text-blue-600 transition-colors"
                 onClick={closeMenu}
               >
                 Portfolio
               </Link>
               <Link 
                 href="/contact" 
-                className="hover:text-blue-600 transition-colors"
+                className="text-white hover:text-blue-600 transition-colors"
                 onClick={closeMenu}
               >
                 Contact
