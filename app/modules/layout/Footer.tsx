@@ -110,7 +110,7 @@ const Footer = () => {
                   ))}
                 </ul>
               </div>
-              {/*5/4/25*/}
+              {/*5/5/25*/}
               {/* Middle column - Contact Info */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold mb-6 text-slate-800">Contact Us</h3>
