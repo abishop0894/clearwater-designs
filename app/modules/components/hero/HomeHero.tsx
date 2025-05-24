@@ -56,12 +56,12 @@ export const HomeHero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 flex flex-col items-start gap-6">
-        <TextAppearUp delay={0.1} className="text-4xl md:text-6xl lg:text-8xl font-bold text-white max-w-4xl">
+        <TextAppearUp delay={0.1} className="text-4xl md:text-6xl overflow-visible h-[25vh] lg:text-8xl font-bold text-white max-w-4xl">
           Clearwater Luxury Designs
         </TextAppearUp>
         
         <TextAppearUp delay={0.2} className="text-lg md:text-xl text-gray-300 max-w-2xl">
-       Text here
+       subtext
         </TextAppearUp>
 
         <TextAppearUp delay={0.3} className="inline-block">
