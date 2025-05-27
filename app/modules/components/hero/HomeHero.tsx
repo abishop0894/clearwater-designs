@@ -107,7 +107,7 @@ export const HomeHero = () => {
         </TextAppearUp>
         
         <SplitText 
-          text="Your animated text here"
+          text="text"
           delay={0.05}
           duration={1}
           ease="easeInOut"
