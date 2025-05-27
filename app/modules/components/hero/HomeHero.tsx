@@ -1,55 +1,101 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { TextAppearUp } from "@/lib/helpers/TextAppearUp"
 import Link from "next/link"
+import SplitText from "../cta/layout/SplitText"
 
 export const HomeHero = () => {
-  // Array of carousel images
-  const slides = [
+  // Memoized array of carousel images to prevent recreation on each render
+  const slides = useMemo(() => [
     "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
     "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20250219-WA0005.jpg",
     "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20250219-WA0006.jpg"
-  ];
+  ], []);
 
   // State to track current slide
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
+  // Ref-based previous index to avoid update conflicts
+  const previousIndexRef = useRef(slides.length - 1);
+  
+  // Update previous index before current index changes
+  useEffect(() => {
+    const newPreviousIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+    previousIndexRef.current = newPreviousIndex;
+  }, [currentIndex, slides.length]);
+
+  // Image preloading - Preloads all images on component mount to prevent loading delays
+  useEffect(() => {
+    slides.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [slides]);
+
+  // Memoized callbacks - useCallback for the nextSlide function to prevent useEffect recreation
+  const nextSlide = useCallback(() => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+      
+      // Transition lock - Prevents multiple transitions from overlapping
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 1200);
+    }
+  }, [slides.length, isTransitioning]);
   
   // Auto-rotate slides every 5 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 5000);
+    const interval = setInterval(nextSlide, 5000);
     
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [nextSlide]);
 
-  // Updated cubic bezier curve for left transition
-  const customEase = [0.46, 0.14, 0.15, 0.86];
+  // Stable dependencies - Memoized customEase to prevent unnecessary re-renders
+  const customEase = useMemo(() => [0.785, 0.135, 0.15, 0.86], []);
+
+  // Get previous index for background image from ref
+  const previousIndex = previousIndexRef.current;
 
   return (
     <div className="h-screen w-full flex items-center relative overflow-hidden bg-black">
+      {/* Previous Image (Background) */}
+      <div className="absolute inset-0 w-full h-full z-[1]">
+        <img
+          key={`bg-${previousIndex}`}
+          src={slides[previousIndex]}
+          className="h-full w-full object-cover object-center absolute inset-0 [mask-image:radial-gradient(square,transparent,black_20%)] pointer-events-none"
+          loading="eager"
+          decoding="sync"
+        />
+      </div>
+
       {/* Carousel Images */}
       <AnimatePresence initial={false}>
         <motion.div
-          key={currentIndex}
-          className="absolute inset-0 w-full h-full"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 0.5, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
+          key={`slide-${currentIndex}`}
+          className="absolute inset-0 w-full h-full z-[2]"
+          initial={{ x: "100%", }}
+          animate={{ x: 0 }}
+          exit={{ x: -40,  }}
           transition={{ 
-            opacity: { duration: 1, ease: customEase },
-            x: { duration: 5, ease: customEase }
+            duration: 1.2,
+            ease: customEase
           }}
         >
           <motion.img
             src={slides[currentIndex]}
             className="h-full w-full object-cover object-center absolute inset-0 [mask-image:radial-gradient(square,transparent,black_20%)] pointer-events-none"
             initial={{ scale: 1.05 }}
-            animate={{ scale: 1.1 }}
+            animate={{ scale: 1.1,  }}
             transition={{ 
               scale: { duration: 1, ease: customEase }
             }}
+            loading="eager"
+            decoding="sync"
           />
         </motion.div>
       </AnimatePresence>
@@ -60,29 +106,18 @@ export const HomeHero = () => {
           Clearwater Luxury Designs
         </TextAppearUp>
         
-        <TextAppearUp delay={0.2} className="text-lg md:text-xl text-gray-300 max-w-2xl">
-       subtext
-        </TextAppearUp>
+        <SplitText 
+          text="text"
+          delay={0.05}
+          duration={1}
+          ease="easeInOut"
+        />
 
         <TextAppearUp delay={0.3} className="inline-block">
-       <Link href="/contact">
-      <button className="bg-white text-black px-4 py-2 rounded-md">Get Started</button>
-       </Link>
+          <Link href="/contact">
+            <button className="bg-white text-black px-4 py-2 rounded-md">Get Started</button>
+          </Link>
         </TextAppearUp>
-      </div>
-
-      {/* Carousel Indicator Dots */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`w-2 h-2 transition-all duration-300 ${
-              index === currentIndex ? "bg-white w-6" : "bg-white/50"
-            }`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
       </div>
     </div>
   );
