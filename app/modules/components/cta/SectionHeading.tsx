@@ -20,7 +20,7 @@
     return (
         <div className="w-full h-screen flex items-center justify-center ">
             {/*infintie text carousel import here */}
-          
+          {/*for commit */}
           <motion.div
           className="w-full md:h-[80vh] h-full z-10 flex items-center justify-center"
           style={{
