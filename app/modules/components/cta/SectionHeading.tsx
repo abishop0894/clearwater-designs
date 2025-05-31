@@ -20,7 +20,8 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
   // Transform from 6.9vh when entering viewport to -6.9vh when exiting
   const rotateValue = useTransform(scrollYProgress, [0, 0.5, 1], [6.9, 0, -6.9]);
   const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [6.9, 0, -6.9]);
-  
+  //for commit
+
   // Create the combined transform string
   const transform = useTransform(
     [translateY, rotateValue, rotateValue],
