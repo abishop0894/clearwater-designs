@@ -21,6 +21,7 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
   const rotateValue = useTransform(scrollYProgress, [0, 0.5, 1], [6.9, 0, -6.9]);
   const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [6.9, 0, -6.9]);
   //for commit
+  //for commit 2x 
 
   // Create the combined transform string
   const transform = useTransform(
