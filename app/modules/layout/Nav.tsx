@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-// import Image from 'next/image';
+import Image from 'next/image';
 import Hamburger from 'hamburger-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -55,9 +55,9 @@ const Nav = () => {
             }}
             className="fixed inset-0 flex md:flex-row flex-col h-screen mt-[60px] w-screen bg-black z-40"
           >
-<div className='md:w-[55vw] md:h-full h-[55vh] bg-red-500 px-6 pt-24 w-full'>
-
-            <div className="flex flex-col space-y-6 text-2xl">
+<div className='md:w-[55vw] md:h-full h-[55vh] relative  px-6 pt-24 w-full'>
+<Image src="https://jrdisplays.s3.us-east-1.amazonaws.com/cta/family-cinema-room-new-wave-av-img~fdc1eca005d71adf_14-3477-1-ef14b1d.jpg" alt="nav-bg" fill className='absolute top-0 left-0 w-full z-0 h-full object-cover object-center opacity-35' />
+            <div className="flex flex-col space-y-6 text-2xl z-[100">
               <Link 
                 href="/" 
                 className="text-white hover:text-blue-600 transition-colors"

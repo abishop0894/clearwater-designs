@@ -210,7 +210,6 @@ const Footer = () => {
       </footer>
       
       {/* Extra space to allow scrolling past the footer */}
-      <div className="h-screen w-full" />
     </div>
   );
 };
