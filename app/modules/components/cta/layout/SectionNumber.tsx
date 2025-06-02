@@ -17,7 +17,7 @@ const SectionNumber = ({ text }: SectionNumberProps) => {
     <div ref={targetRef} className="flex items-center justify-center h-[100px]">
       {/* Outer Box */}
       <motion.div
-        className="relative flex items-center justify-center border border-white overflow-hidden"
+        className="relative flex items-center justify-center border border-black overflow-hidden"
         style={{
           width: 50,
           height: 60,
@@ -28,7 +28,7 @@ const SectionNumber = ({ text }: SectionNumberProps) => {
       >
         {/* Inner Box */}
         <motion.div
-          className="absolute flex items-center justify-center border border-white overflow-hidden"
+          className="absolute flex items-center justify-center border border-black overflow-hidden"
           style={{
             width: 30,
             height: 40,
@@ -39,7 +39,7 @@ const SectionNumber = ({ text }: SectionNumberProps) => {
         >
           {/* Text */}
           <motion.span
-            className="text-white text-sm font-medium whitespace-nowrap"
+            className="text-black text-sm font-medium whitespace-nowrap"
             initial={{ x: 20, opacity: 0 }}
             animate={isInView ? { x: 0, opacity: 1 } : { x: 20, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut", delay: 0.6 }}

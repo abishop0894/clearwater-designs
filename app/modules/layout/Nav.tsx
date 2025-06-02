@@ -8,7 +8,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const links = [
+    {
+      label: 'Home',
+      href: '/',
+    },
+    {
+      label: 'About',
+      href: '/about',
+    },
+    {
+      label: 'Services',
+      href: '/services',
+    },
+    {
+      label: 'Portfolio',
+      href: '/portfolio',
+    },
+    {
+      label: 'Contact',
+      href: '/contact',
+    },
+    
+  ];
+  
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -56,43 +79,20 @@ const Nav = () => {
             className="fixed inset-0 flex md:flex-row flex-col h-screen mt-[60px] w-screen bg-black z-40"
           >
 <div className='md:w-[55vw] md:h-full h-[55vh] relative  px-6 pt-24 w-full'>
-<Image src="https://jrdisplays.s3.us-east-1.amazonaws.com/cta/family-cinema-room-new-wave-av-img~fdc1eca005d71adf_14-3477-1-ef14b1d.jpg" alt="nav-bg" fill className='absolute top-0 left-0 w-full z-0 h-full object-cover object-center opacity-35' />
-            <div className="flex flex-col space-y-6 text-2xl z-[100">
-              <Link 
-                href="/" 
-                className="text-white hover:text-blue-600 transition-colors"
-                onClick={closeMenu}
-              >
-                Home
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-white hover:text-blue-600 transition-colors"
-                onClick={closeMenu}
-              >
-                About
-              </Link>
-              <Link 
-                href="/services" 
-                className="text-white hover:text-blue-600 transition-colors"
-                onClick={closeMenu}
-              >
-                Services
-              </Link>
-              <Link 
-                href="/portfolio" 
-                className="text-white hover:text-blue-600 transition-colors"
-                onClick={closeMenu}
-              >
-                Portfolio
-              </Link>
-              <Link 
-                href="/contact" 
-                className="text-white hover:text-blue-600 transition-colors"
-                onClick={closeMenu}
-              >
-                Contact
-              </Link>
+<Image src="https://jrdisplays.s3.us-east-1.amazonaws.com/cta/family-cinema-room-new-wave-av-img~fdc1eca005d71adf_14-3477-1-ef14b1d.jpg" alt="nav-bg" fill className='absolute top-0 left-0 w-full z-[-10] h-full border-r-[1px] border-white object-cover object-center' />
+            <div className='absolute top-0 left-0 w-full h-full bg-black/60 z-10' />
+            <div className="flex flex-col space-y-6  text-2xl">
+              {links.map((link, index) => (
+                <Link 
+                  key={index}
+                  href={link.href} 
+                  className="text-white hover:text-blue-600 transition-colors z-[100]"
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              
             </div></div>
           </motion.div>
         )}
