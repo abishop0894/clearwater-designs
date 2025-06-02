@@ -14,39 +14,43 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start end", "end start"]
+    offset: ["start 0.9", "end 0.1"]
   });
 
-  // Transform from 6.9vh when entering viewport to -6.9vh when exiting
-  const rotateValue = useTransform(scrollYProgress, [0, 0.5, 1], [6.9, 0, -6.9]);
-  const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [6.9, 0, -6.9]);
-  //for commit
-  //for commit 2x 
-
-  // Create the combined transform string
-  const transform = useTransform(
-    [translateY, rotateValue, rotateValue],
-    ([translateYVal, rotateXVal, rotateYVal]) => 
-      `translate3d(0px, ${translateYVal}vh, 0px) scale3d(1, 1, 1) rotateX(${rotateXVal}deg) rotateY(${rotateYVal}deg) rotateZ(0deg)`
-  );
+  // More pronounced transforms for better visibility
+  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
+  const rotateY = useTransform(scrollYProgress, [0, 0.5, 1], [8, 0, -8]);
+  const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   
   return (
     <div ref={targetRef} className="w-full h-screen flex items-center justify-center">
       <motion.div
-        className="w-full md:h-[80vh] h-full z-10 flex items-center justify-center"
+        className="w-full md:h-[80vh] h-full z-10 flex items-center justify-center relative"
         style={{
-          willChange: 'transform',
-          transformStyle: 'preserve-3d',
-          transform
+          perspective: "1000px",
+          transformStyle: "preserve-3d"
         }}
       >
-        <Image 
-          src={backgroundImg} 
-          alt="background" 
-          fill 
-          className="w-[80vw] md:px-[5vw] h-[80vh] object-cover" 
-        />
-        <MarqueeComp title={title} />
+        <motion.div
+          className="w-full h-full flex items-center justify-center relative"
+          style={{
+            rotateX,
+            rotateY,
+            y: translateY,
+            scale,
+            opacity
+          }}
+        >
+          <Image 
+            src={backgroundImg} 
+            alt="background" 
+            fill 
+            className="w-[80vw] md:px-[5vw] h-[80vh] object-cover" 
+          />
+          <MarqueeComp title={title} />
+        </motion.div>
       </motion.div>
     </div>
   )
