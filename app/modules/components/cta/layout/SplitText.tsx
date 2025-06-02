@@ -63,10 +63,9 @@ const SplitText: React.FC<SplitTextProps> = ({
 
   // Container variants for staggering children
   const containerVariants = {
-    hidden: { opacity: 1, x: 50     },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
-      x: 0,
       transition: {
         duration: .7,
         staggerChildren: delay,

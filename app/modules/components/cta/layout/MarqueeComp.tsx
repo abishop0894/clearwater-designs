@@ -1,6 +1,6 @@
 "use client"
 
-import { Marquee } from "./layout/Maquee"
+import { Marquee } from "./Maquee"
 
 
 export const MarqueeComp = ({title}: {title: string}) => {

@@ -1,7 +1,7 @@
 "use client"
 import { motion, useTransform } from "framer-motion";
 import { useScroll } from "framer-motion";
-import { MarqueeComp } from "./MarqueeComp";
+import { MarqueeComp } from "./layout/MarqueeComp";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -50,7 +50,7 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
             src={backgroundImg} 
             alt="background" 
             fill 
-            className="w-[80vw] md:px-[5vw] sm:p-0 pl-[5vw] pr-[5vw] h-[80vh] object-cover object-center" 
+            className="w-[80vw] md:px-[5vw] sm:p-0 h-[80vh] object-cover object-center" 
           />
         </motion.div>
       </motion.div>
