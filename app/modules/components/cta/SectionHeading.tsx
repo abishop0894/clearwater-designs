@@ -25,7 +25,10 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   
   return (
-    <div ref={targetRef} className="w-full h-screen flex items-center justify-center">
+    <div ref={targetRef} className="w-full h-screen relative flex items-center justify-center">
+      <div className="absolute top-0 z-50 left-0 w-[135vw] h-full flex items-center justify-center">
+        <MarqueeComp title={title} />
+      </div>
       <motion.div
         className="w-full md:h-[80vh] h-full z-10 flex items-center justify-center relative"
         style={{
@@ -49,9 +52,6 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
             fill 
             className="w-[80vw] md:px-[5vw] h-[80vh] object-cover" 
           />
-          <div className="absolute top-0 left-0 w-[130vw] h-full flex items-center justify-center">
-            <MarqueeComp title={title} />
-          </div>
         </motion.div>
       </motion.div>
     </div>
