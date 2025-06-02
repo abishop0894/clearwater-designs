@@ -49,7 +49,9 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
             fill 
             className="w-[80vw] md:px-[5vw] h-[80vh] object-cover" 
           />
-          <MarqueeComp title={title} />
+          <div className="absolute top-0 left-0 w-[130vw] h-full flex items-center justify-center">
+            <MarqueeComp title={title} />
+          </div>
         </motion.div>
       </motion.div>
     </div>
