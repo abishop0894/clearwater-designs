@@ -102,16 +102,16 @@ export const HomeHero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 flex flex-col items-start gap-6">
-        <TextAppearUp delay={0.1} className="text-4xl md:text-6xl overflow-visible h-[25vh] lg:text-8xl font-bold text-white max-w-4xl">
-          Clearwater Luxury Designs
-        </TextAppearUp>
         
         <SplitText 
-          text="text"
+          text="Clearwater Luxury Designs"
           delay={0.05}
+          textAlign="left"
           duration={1}
           ease="easeInOut"
+          className="text-4xl md:text-6xl text-wrap overflow-visible h-[25vh] lg:text-8xl font-bold text-white max-w-6xl"
         />
+      
 
         <TextAppearUp delay={0.3} className="inline-block">
           <Link href="/contact">
