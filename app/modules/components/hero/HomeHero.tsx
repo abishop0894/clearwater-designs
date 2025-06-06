@@ -109,7 +109,7 @@ export const HomeHero = () => {
           textAlign="left"
           duration={1}
           ease="easeInOut"
-          className="text-4xl md:text-6xl overflow-visible h-[25vh] text-left lg:text-8xl font-bold text-white max-w-6xl"
+          className="text-4xl md:text-6xl overflow-visible w-[100vw] h-[25vh] text-left lg:text-8xl font-bold text-white md:max-w-6xl"
         />
       
 

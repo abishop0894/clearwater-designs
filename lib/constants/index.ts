@@ -33,3 +33,61 @@ export const homeCarouselImages = [
     
     "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
 ]
+
+export const portfolioCards = [
+  {
+    id: 1,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+  {
+    id: 2,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+    {
+    id: 3,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+  {
+    id: 4,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+    {
+    id: 5,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+  {
+    id: 6,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  }
+]
+
