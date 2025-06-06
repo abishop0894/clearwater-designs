@@ -1,3 +1,4 @@
+"use client"
 import { HomeHero } from "./modules/components/hero/HomeHero";
 import Page from "./modules/layout/Page";
 import SectionHeading from "./modules/components/cta/SectionHeading";
