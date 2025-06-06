@@ -34,7 +34,7 @@ const Carousel = ({ cards, className = "" }: CarouselProps) => {
           className="flex gap-8 px-8 cursor-grab active:cursor-grabbing"
           drag="x"
           dragConstraints={{
-            left: -(cards.length * 600 - document.documentElement.clientWidth + 200),
+            left: -(cards.length * 600 - 1200),
             right: 200
           }}
           dragElastic={0.1}
