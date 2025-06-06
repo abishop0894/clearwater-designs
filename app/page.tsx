@@ -19,7 +19,7 @@ export default function Home() {
   subText="Additional details in smaller text"
 />
 <Carousel cards={portfolioCards} />
-    <SectionHeading title="About Us" backgroundImg= "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg" />
+    <SectionHeading title="About Us"  backgroundImg= "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg" />
   </Page>
   );
 }

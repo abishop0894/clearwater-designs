@@ -18,9 +18,10 @@ interface CarouselCardData {
 interface CarouselProps {
   cards: CarouselCardData[];
   className?: string;
+  vertical?: boolean;
 }
 
-const Carousel = ({ cards, className = "" }: CarouselProps) => {
+const Carousel = ({ cards, className = "", vertical = false }: CarouselProps) => {
   return (
     <div className={`relative w-full min-h-screen overflow-hidden ${className}`}>
       {/* Background Marquee */}
@@ -31,9 +32,12 @@ const Carousel = ({ cards, className = "" }: CarouselProps) => {
       {/* Carousel Container */}
       <div className="relative z-10 w-full h-full flex items-center py-8">
         <motion.div
-          className="flex gap-8 px-8 cursor-grab active:cursor-grabbing"
-          drag="x"
-          dragConstraints={{
+          className={`${vertical ? 'flex-col gap-8 py-8' : 'flex gap-8 px-8'} cursor-grab active:cursor-grabbing`}
+          drag={vertical ? "y" : "x"}
+          dragConstraints={vertical ? {
+            top: -(cards.length * 600 - 800),
+            bottom: 200
+          } : {
             left: -(cards.length * 600 - 1200),
             right: 200
           }}
@@ -74,14 +78,14 @@ const Carousel = ({ cards, className = "" }: CarouselProps) => {
             className="text-white/60"
           >
             <path 
-              d="M8 6L12 2L16 6M8 18L12 22L16 18M2 12L6 8V16L2 12ZM22 12L18 8V16L22 12Z" 
+              d={vertical ? "M6 8L2 12L6 16M18 8L22 12L18 16M12 2V22" : "M8 6L12 2L16 6M8 18L12 22L16 18M2 12L6 8V16L2 12ZM22 12L18 8V16L22 12Z"}
               stroke="currentColor" 
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round"
             />
           </svg>
-          <span>Drag to scroll</span>
+          <span>{vertical ? 'Drag to scroll vertically' : 'Drag to scroll'}</span>
         </div>
       </div>
     </div>
