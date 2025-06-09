@@ -91,3 +91,32 @@ export const portfolioCards = [
   }
 ]
 
+export const sectionOneCarousel= [
+  {
+    id: 1,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+  {
+    id: 2,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+    {
+    id: 3,
+    backgroundImage: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
+    showOuterBorder: true,
+    showInnerBorder: true,
+    outerBorderColor: "white",
+    innerBorderColor: "white",
+
+  },
+]
