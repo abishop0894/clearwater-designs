@@ -3,7 +3,7 @@ import { motion, useTransform } from "framer-motion";
 import { useScroll } from "framer-motion";
 import { MarqueeComp } from "./layout/MarqueeComp";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 interface SectionHeaderProps {
   title: string,
@@ -16,6 +16,22 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
     target: targetRef,
     offset: ["start 0.9", "end 0.1"]
   });
+
+  const getViewportPosition = () => {
+    if (targetRef.current) {
+      const rect = targetRef.current.getBoundingClientRect();
+      return rect.top;
+    }
+    return 0;
+  }
+
+useEffect(() => {
+  const handleScroll = () => {
+    console.log(getViewportPosition())
+  }
+  window.addEventListener("scroll", handleScroll)
+  return () => window.removeEventListener("scroll", handleScroll)
+}, [])
 
   // More pronounced transforms for better visibility
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
