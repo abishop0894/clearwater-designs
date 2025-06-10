@@ -126,7 +126,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const previousIndex = previousIndexRef.current;
 
   return (
-    <section className="relative py-[12vh] antialiased md:py-[14vh] overflow-hidden bg-black">
+    <section className="relative py-[16vh] antialiased md:py-[18vh] overflow-hidden bg-black">
       {/* Previous Image (Background) */}
       <div className="absolute inset-0 w-full h-full z-[1]">
         <img
