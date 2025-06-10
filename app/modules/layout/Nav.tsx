@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Hamburger from 'hamburger-react';
@@ -8,6 +8,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const links = [
     {
       label: 'Home',
@@ -37,10 +47,14 @@ const Nav = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-100 py-4 px-6  border-b-[1px] border-white bg-black/20 backdrop-blur-sm flex items-center justify-between">
+    <nav className={`fixed top-0 left-0 right-0 z-100 py-4 px-6 flex items-center justify-between transition-all duration-1000 ${
+      isScrolled ? 'bg-black/20' : 'bg-transparent'
+    }`}>
       {/* Logo */}
       <Link href="/" className="relative z-50 p-3 rounded-md" aria-label="Clearwater Designs Home">
-        <h1 className="text-2xl font-bold text-white">Clearwater Designs</h1>
+        <h1 className={`font-bold text-white transition-all duration-1000 ${
+          isScrolled ? 'text-2xl' : 'text-4xl'
+        }`}>Logo</h1>
       </Link>
 
       {/* Hamburger Menu Icon */}
