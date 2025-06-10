@@ -1,7 +1,7 @@
 import { sectionOneCarousel } from "@/lib/constants";
 import Carousel from "../cta/Carousel";
 import SectionHeading from "../cta/SectionHeading";
-
+//test
 const FixedSectionHeadingWithCards = () => {
   return (
     <div className="relative h-screen w-full" >
