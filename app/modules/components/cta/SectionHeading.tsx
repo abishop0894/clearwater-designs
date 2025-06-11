@@ -29,7 +29,7 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   
   return (
-    <div ref={targetRef} className="w-full h-screen dark:bg-black relative flex items-center justify-center">
+    <div ref={targetRef} className="w-full h-screen bg-black relative flex items-center justify-center">
       <div className="absolute top-0 z-50 left-0 w-[135vw] h-full flex items-center justify-center">
         <MarqueeComp title={title} />
       </div>
