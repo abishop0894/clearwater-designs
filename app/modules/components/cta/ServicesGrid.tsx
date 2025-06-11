@@ -18,7 +18,7 @@ interface ImageGridSectionProps {
 
 const ImageGridSection: React.FC<ImageGridSectionProps> = ({ items }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-black">
       <div className="py-8 px-4 mx-auto max-w-screen-2xl text-center lg:py-16 lg:px-12">
         <div className="grid grid-cols-2 gap-2">
           {items.map((item) => (

@@ -3,7 +3,7 @@ import { motion, useTransform } from "framer-motion";
 import { useScroll } from "framer-motion";
 import { MarqueeComp } from "./layout/MarqueeComp";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 interface SectionHeaderProps {
   title: string,
@@ -17,21 +17,9 @@ const SectionHeader = ({title, backgroundImg} : SectionHeaderProps) => {
     offset: ["start 0.9", "end 0.1"]
   });
 
-  const getViewportPosition = () => {
-    if (targetRef.current) {
-      const rect = targetRef.current.getBoundingClientRect();
-      return rect.top;
-    }
-    return 0;
-  }
+  
 
-useEffect(() => {
-  const handleScroll = () => {
-    console.log(getViewportPosition())
-  }
-  window.addEventListener("scroll", handleScroll)
-  return () => window.removeEventListener("scroll", handleScroll)
-}, [])
+
 
   // More pronounced transforms for better visibility
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
@@ -41,7 +29,7 @@ useEffect(() => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   
   return (
-    <div ref={targetRef} className="w-full h-screen relative flex items-center justify-center">
+    <div ref={targetRef} className="w-full h-screen dark:bg-black relative flex items-center justify-center">
       <div className="absolute top-0 z-50 left-0 w-[135vw] h-full flex items-center justify-center">
         <MarqueeComp title={title} />
       </div>
