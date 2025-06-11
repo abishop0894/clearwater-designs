@@ -52,8 +52,8 @@ const Nav = () => {
     }`}>
       {/* Logo */}
       <Link href="/" className="relative z-50 p-3 rounded-md" aria-label="Clearwater Designs Home">
-        <Image src="https://jrdisplays.s3.us-east-1.amazonaws.com/clearwater-designs/noBgColor_2.png" alt="Clearwater Designs Logo" width={150} height={150} className={`font-bold text-white transition-all duration-1000 ${
-          isScrolled ? 'h-[80px] w-[80px]' : 'h-[120px] w-[120px]'
+        <Image src={isScrolled ? `https://jrdisplays.s3.us-east-1.amazonaws.com/clearwater-designs/symbol_2.png` : `https://jrdisplays.s3.us-east-1.amazonaws.com/clearwater-designs/noBgColor_2.png`} alt="Clearwater Designs Logo" width={150} height={150} className={`font-bold text-white transition-all duration-1000 ${
+          isScrolled ? 'h-[50px] w-[50px]' : 'h-[120px] w-[120px]'
         }`}/>
       </Link>
 
