@@ -36,7 +36,7 @@ interface HeroSectionProps {
 // Category Card Component with Image Background
 const CategoryCard: React.FC<CategoryCardProps> = ({ title, ctaText, ctaHref }) => {
   return (
-    <div className="relative space-y-4 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm p-6 shadow-lg md:space-y-6 overflow-hidden min-h-[300px] flex flex-col justify-end">
+    <div className="relative rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm p-6 shadow-lg overflow-hidden min-h-[300px] flex flex-col justify-end">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <Image
@@ -44,8 +44,8 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, ctaText, ctaHref }) 
           src={"https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg"}
           alt={title}
           fill
-          className="object-cover object-center"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover object-center h-full w-full"
+       
         />
         <div className="absolute inset-0 bg-black/60 dark:bg-black/70" />
       </div>
@@ -164,7 +164,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </AnimatePresence>
 
       {/* Dimmed Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-[5]" />
+      <div className="absolute inset-0 bg-black/70 z-[5]" />
 
       <div className="relative z-10 mx-auto grid max-w-screen-xl px-4 pb-8 xl:grid-cols-12 xl:gap-16 lg:pb-16 2xl:px-0">
         {/* Hero Content */}
