@@ -23,7 +23,7 @@ interface CarouselProps {
 
 const Carousel = ({ cards, className = "", vertical = false }: CarouselProps) => {
   return (
-    <div className={`relative w-full min-h-screen ${vertical ? 'h-auto -mt-[5vh] pt-[90vh] max-h-screen overflow-y-auto' : 'overflow-hidden'} ${className}`}>
+    <div className={`relative w-full min-h-screen dark:bg-black ${vertical ? 'h-auto -mt-[5vh] pt-[90vh] max-h-screen overflow-y-auto' : 'overflow-hidden'} ${className}`}>
       {/* Background Marquee */}
      {!vertical && <div className="absolute inset-0 z-0 -mt-[40vh] flex items-center justify-center">
         <MarqueeComp title="Portfolio" />
