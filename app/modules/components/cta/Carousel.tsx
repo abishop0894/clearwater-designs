@@ -23,9 +23,9 @@ interface CarouselProps {
 
 const Carousel = ({ cards, className = "", vertical = false }: CarouselProps) => {
   return (
-    <div className={`relative w-full min-h-screen dark:bg-black ${vertical ? 'h-auto -mt-[5vh] pt-[90vh] max-h-screen overflow-y-auto' : 'overflow-hidden'} ${className}`}>
+    <div className={`relative w-full h-auto bg-black ${vertical ? 'h-auto -mt-[5vh] pt-[90vh] max-h-screen overflow-y-auto' : 'overflow-hidden'} ${className}`}>
       {/* Background Marquee */}
-     {!vertical && <div className="absolute inset-0 z-0 -mt-[40vh] flex items-center justify-center">
+     {!vertical && <div className="absolute inset-0 z-0 mt-[1/2] flex items-center justify-center">
         <MarqueeComp title="Portfolio" />
       </div>}
 
@@ -93,29 +93,7 @@ const Carousel = ({ cards, className = "", vertical = false }: CarouselProps) =>
         )}
       </div>
 
-      {/* Drag Indicator - only show for horizontal drag */}
-      {!vertical && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="flex items-center gap-2 text-white/60 text-sm">
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              className="text-white/60"
-            >
-              <path 
-                d="M8 6L12 2L16 6M8 18L12 22L16 18M2 12L6 8V16L2 12ZM22 12L18 8V16L22 12Z"
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span>Drag to scroll</span>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 };

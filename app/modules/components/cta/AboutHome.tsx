@@ -1,113 +1,203 @@
+
 import React from 'react';
 import Image from 'next/image';
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 // Type definitions
-interface FeatureCard {
+interface StatItem {
   id: string;
-  title: string;
-  description: string;
-  image: string;
-  imageAlt: string;
+  label: string;
+  value: string;
+  prefix?: string;
+  suffix?: string;
 }
 
-interface FeatureCardsSectionProps {
-  title: string;
-  ctaText?: string;
-  ctaHref?: string;
-  features: FeatureCard[];
+interface GalleryImage {
+  id: string;
+  src: string;
+  alt: string;
+  offset?: 'normal' | 'up'; // for staggered effect
 }
 
-const FeatureCardsSection: React.FC<FeatureCardsSectionProps> = ({
+interface AboutSectionProps {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  missionTitle: string;
+  missionContent: string[];
+  numbersTitle: string;
+  stats: StatItem[];
+  galleryImages: GalleryImage[];
+}
+
+const AboutSection: React.FC<AboutSectionProps> = ({
+  eyebrow,
   title,
-  ctaText,
-  ctaHref,
-  features
+  subtitle,
+  missionTitle,
+  missionContent,
+  numbersTitle,
+  stats,
+  galleryImages
 }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-12 lg:py-16 sm:px-6 lg:px-6">
+    <div className="overflow-hidden bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         {/* Header */}
-        <div className="text-center text-gray-900">
-          <h2 className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white leading-tight">
+        <div className="max-w-4xl">
+          <p className="text-base/7 font-semibold text-indigo-600">
+            {eyebrow}
+          </p>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
             {title}
-          </h2>
-          {ctaText && ctaHref && (
-            <a 
-              href={ctaHref} 
-              className="inline-flex items-center text-base sm:text-lg font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
-            >
-              {ctaText}
-              <ChevronRightIcon className="ml-1 w-5 h-5 sm:w-6 sm:h-6" />
-            </a>
-          )}
+          </h1>
+          <p className="mt-6 text-xl/8 text-balance text-gray-700">
+            {subtitle}
+          </p>
         </div>
 
-        {/* Feature Cards Grid */}
-        <div className="grid gap-6 mt-8 sm:mt-12 lg:mt-14 lg:gap-12 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <div key={feature.id} className="flex mb-2 md:flex-col md:mb-0">
-              {/* Image */}
-              <div className="mr-3 w-24 h-24 sm:w-28 sm:h-28 md:w-full md:h-48 lg:h-56 md:mr-0 flex-shrink-0">
-                <Image
-                  src={feature.image}
-                  alt={feature.imageAlt}
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-cover w-full h-full"
-                  sizes="(max-width: 768px) 25vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
+        {/* Main Content Grid */}
+        <section className="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
+          {/* Mission Content */}
+          <div className="lg:pr-8">
+            <h2 className="text-2xl font-semibold tracking-tight text-pretty text-gray-900">
+              {missionTitle}
+            </h2>
+            {missionContent.map((paragraph, index) => (
+              <p 
+                key={index} 
+                className={`text-base/7 text-gray-600 ${index === 0 ? 'mt-6' : 'mt-8'}`}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
-              {/* Content */}
-              <div className="flex-1 md:mt-4">
-                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 md:mb-2.5 text-gray-900 dark:text-white">
-                  {feature.title}
-                </h3>
-                <p className="text-sm sm:text-sm md:text-base text-gray-500 dark:text-gray-400 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+          {/* Image Gallery */}
+          <div className="pt-16 lg:row-span-2 lg:-mr-16 xl:mr-auto">
+            <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
+              {galleryImages.map((image, index) => (
+                <div 
+                  key={index}
+                  className={`
+                    aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10
+                    ${image.offset === 'up' ? '-mt-8 lg:-mt-40' : ''}
+                  `}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={560}
+                    height={560}
+                    className="block size-full object-cover"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+
+          {/* Statistics */}
+          <div className="max-lg:mt-16 lg:col-span-1">
+            <p className="text-base/7 font-semibold text-gray-500">
+              {numbersTitle}
+            </p>
+            <hr className="mt-6 border-t border-gray-200" />
+            <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+              {stats.map((stat, index) => (
+                <div 
+                  key={stat.id}
+                  className={`
+                    flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4
+                    ${index >= stats.length - 2 ? 'max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4 sm:border-b-0 sm:pb-0' : ''}
+                    ${index === stats.length - 1 ? 'border-b-0 pb-0' : ''}
+                  `}
+                >
+                  <dt className="text-sm/6 text-gray-600">
+                    {stat.label}
+                  </dt>
+                  <dd className="order-first text-6xl font-semibold tracking-tight">
+                    {stat.prefix}
+                    <span>{stat.value}</span>
+                    {stat.suffix}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   );
 };
 
 // Example usage with sample data
 const AboutHome: React.FC = () => {
-  const sampleData: FeatureCardsSectionProps = {
-    title: "Turn collaboration into innovation",
-    ctaText: "Learn more about inner source",
-    ctaHref: "#",
-    features: [
+  const sampleData: AboutSectionProps = {
+    eyebrow: "About us",
+    title: "On a mission to empower remote teams",
+    subtitle: "Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas.",
+    missionTitle: "Our mission",
+    missionContent: [
+      "Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id.",
+      "Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci."
+    ],
+    numbersTitle: "The numbers",
+    stats: [
       {
         id: '1',
-        title: "Build as one team",
-        description: "Work seamlessly across your organization on a platform designed for collaboration.",
-        image: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
-        imageAlt: "Team collaboration in office"
+        label: 'Metric',
+        value: '150',
+        prefix: '$',
+        suffix: 'M'
       },
       {
         id: '2',
-        title: "Transform your culture",
-        description: "Embrace innersource, iterate faster, and ship more frequently using best tools from open source teams.",
-        image: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
-        imageAlt: "Office transformation culture"
+        label: 'Metric',
+        value: '30',
+        suffix: 'K'
       },
       {
         id: '3',
-        title: "Learn as you build",
-        description: "Get insight into how your team builds today with community-backed KPIs.",
-        image: "https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg",
-        imageAlt: "Learning and building process"
+        label: 'Metric',
+        value: '1.5',
+        suffix: 'M'
+      },
+      {
+        id: '4',
+        label: 'Metric',
+        value: '200',
+        suffix: 'M'
+      }
+    ],
+    galleryImages: [
+      {
+        id: '1',
+        src: 'https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg',
+        alt: 'Team member working remotely',
+        offset: 'normal'
+      },
+      {
+        id: '2',
+        src: 'https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg',
+        alt: 'Remote collaboration session',
+        offset: 'up'
+      },
+      {
+        id: '3',
+        src: 'https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg',
+        alt: 'Team building activity',
+        offset: 'normal'
+      },
+      {
+        id: '4',
+        src: 'https://jrdisplays.s3.us-east-1.amazonaws.com/portfolio/interior/IMG-20240410-WA0001.jpg',
+        alt: 'Office collaboration space',
+        offset: 'up'
       }
     ]
   };
 
-  return <FeatureCardsSection {...sampleData} />;
+  return <AboutSection {...sampleData} />;
 };
 
 export default AboutHome;
