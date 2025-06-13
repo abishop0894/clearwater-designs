@@ -7,18 +7,8 @@ import {
 } from '@heroicons/react/24/solid'
 
 const navigation = {
-  solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Automation', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
-  ],
-  support: [
-    { name: 'Submit ticket', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-  ],
+
+ 
   company: [
     { name: 'About', href: '#' },
     { name: 'Blog', href: '#' },
@@ -40,8 +30,6 @@ const navigation = {
 }
 
 const sections = [
-  { title: 'Solutions', items: navigation.solutions },
-  { title: 'Support', items: navigation.support },
   { title: 'Company', items: navigation.company },
   { title: 'Legal', items: navigation.legal },
 ]
