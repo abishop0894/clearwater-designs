@@ -5,6 +5,7 @@ import HeroTwo from "./modules/components/hero/HeroTwo";
 import TwoColumnSectionComponent from "./modules/components/cta/TwoColumnSection";
 import ImageGridSectionComponent from "./modules/components/cta/ServicesGrid";
 import AboutHome from "./modules/components/cta/AboutHome";
+import ContactSection from "./modules/components/sections/ContactForm";
 export default function Home() {
   return (
   <Page>
@@ -12,9 +13,9 @@ export default function Home() {
     <AboutHome />
     <TwoColumnSectionComponent />
     <ImageGridSectionComponent />
-  
+   
 <Carousel cards={portfolioCards} />
-
+ <ContactSection />
   </Page>
   );
 }
