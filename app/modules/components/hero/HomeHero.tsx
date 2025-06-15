@@ -61,7 +61,7 @@ export const HomeHero = () => {
   const previousIndex = previousIndexRef.current;
 
   return (
-    <div className="h-screen w-full flex items-center relative overflow-hidden bg-black">
+    <div className="h-auto min-h-screen w-full flex items-center relative overflow-hidden bg-black">
       {/* Previous Image (Background) */}
       <div className="absolute inset-0 w-full h-full z-[1]">
         <img

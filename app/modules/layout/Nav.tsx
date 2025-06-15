@@ -47,7 +47,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-100 py-4 px-6 flex items-center justify-between transition-all duration-1000 ${
+    <nav className={`fixed top-0 left-0 right-0 z-100 py-2 px-6 flex items-center justify-between transition-all duration-1000 ${
       isScrolled ? 'bg-black/20' : 'bg-transparent'
     }`}>
       {/* Logo */}

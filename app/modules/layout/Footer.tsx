@@ -36,7 +36,7 @@ const sections = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900">
+    <footer className="bg-black">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-2xl text-center">
           <div>
@@ -62,8 +62,8 @@ export default function Footer() {
         <div className="mt-24 border-t border-white/10 pt-12 xl:grid xl:grid-cols-3 xl:gap-8">
           <img
             alt="Company name"
-            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-            className="h-9"
+            src="https://jrdisplays.s3.us-east-1.amazonaws.com/clearwater-designs/noBgColor_2.png"
+            className="h-[200px] w-[200px]"
           />
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             {sections.map((section, index) => (

@@ -29,7 +29,7 @@ const comparisons = [
 
 export default function ComparisonSection() {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-black">
       <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
         <div className="grid space-y-8 lg:grid-cols-2 lg:gap-12 lg:space-y-0">
           <div>
